@@ -1,0 +1,14 @@
+pdf-lib 1.17.1 — MIT
+git+https://github.com/Hopding/pdf-lib.git
+
+pdfjs-dist 6.4.299 — Apache-2.0
+git+https://github.com/mozilla/pdf.js.git
+
+jspdf 4.2.1 — MIT
+https://github.com/parallax/jsPDF.git
+
+svg2pdf.js 2.8.1 — MIT
+git+https://github.com/yWorks/svg2pdf.js.git
+
+@pdf-lib/fontkit 1.1.1 — MIT
+git://github.com/Hopding/fontkit.git

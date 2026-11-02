@@ -1,0 +1,11 @@
+node_modules/
+.test-output/
+.work/
+__pycache__/
+.DS_Store
+.env
+.env.*
+private-data/
+*.sqlite
+*.db
+*.log
