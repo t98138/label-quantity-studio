@@ -4,5 +4,15 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs"
+  },
+  "version": "1.0.0",
+  "description": "签数：标签用量计算与打印助手",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t98138/label-quantity-studio.git"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

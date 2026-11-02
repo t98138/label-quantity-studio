@@ -1,0 +1,13 @@
+services:
+  qianshu:
+    image: caddy:2.11.4-alpine
+    restart: unless-stopped
+    entrypoint: ["caddy", "file-server", "--root", "/srv", "--listen", ":8080"]
+    read_only: true
+    tmpfs:
+      - /data
+      - /config
+    volumes:
+      - ../dist:/srv:ro
+    ports:
+      - "127.0.0.1:8767:8080"
