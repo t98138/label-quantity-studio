@@ -19,7 +19,7 @@ BASE = '/qianshu/'
 AUTH = BASE + 'auth/'
 COOKIE = '__Secure-qianshu_session'
 NONCE = '__Secure-qianshu_login'
-REMEMBER = 30 * 24 * 3600
+REMEMBER = 90 * 24 * 3600
 TEMPORARY = 12 * 3600
 MAX_ATTEMPTS = 8
 WINDOW = 15 * 60
@@ -135,7 +135,7 @@ class Handler(BaseHTTPRequestHandler):
 <input type="hidden" name="csrf" value="CSRF"><input type="hidden" name="next" value="NEXT">
 <label for="username">账号</label><input id="username" name="username" autocomplete="username" required value="USER" maxlength="128">
 <label for="password">密码</label><input id="password" type="password" name="password" autocomplete="current-password" required maxlength="1024">
-<label class="remember"><input type="checkbox" name="remember" value="yes" checked><span>记住此设备 <small>30 天内自动登录</small></span></label>
+<label class="remember"><input type="checkbox" name="remember" value="yes" checked><span>记住此设备 <small>90 天内自动登录</small></span></label>
 <button type="submit">登录签数 <span aria-hidden="true">↗</span></button>
 </form><p class="foot">仅在你自己的设备上勾选。<br>使用完公共设备后，请退出登录。</p>'''
         content = content.replace('CSRF', nonce).replace('NEXT', html.escape(safe_next(destination), quote=True)).replace('USER', html.escape(self.server.credential['username'], quote=True))

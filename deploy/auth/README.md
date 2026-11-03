@@ -1,6 +1,6 @@
 # 可选：记住设备的私有登录
 
-用 Cookie 会话替代浏览器 Basic Auth 弹窗。勾选“记住此设备”时有效期为 30 天；
+用 Cookie 会话替代浏览器 Basic Auth 弹窗。勾选“记住此设备”时有效期为 90 天；
 未勾选时使用浏览器会话 Cookie，服务端最长允许 12 小时。浏览器若恢复会话，
 会话 Cookie 也可能被恢复，因此公共设备应主动退出。
 
@@ -53,6 +53,6 @@ sudo systemctl enable --now qianshu-auth
 python3 -m unittest discover -s deploy/auth -p 'test_*.py' -v
 ```
 
-测试仅使用本机回环临时端口与可丢弃数据库，覆盖登录、30 天 Cookie、会话重启持久化、
+测试仅使用本机回环临时端口与可丢弃数据库，覆盖登录、90 天 Cookie、会话重启持久化、
 未勾选记住设备、过期、退出吊销、CSRF、跳转限制与登录限速。
 上线后仍须通过正式 HTTPS 入口检查网页、PDF、缩略图与目录清单的认证。
