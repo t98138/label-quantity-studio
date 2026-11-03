@@ -1,0 +1,33 @@
+[Unit]
+Description=Qianshu remembered-device authentication
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=qianshu-auth
+StateDirectoryMode=0700
+LoadCredential=login.json:/opt/qianshu/auth-credential.json
+Environment=QS_CREDENTIAL=%d/login.json
+EnvironmentFile=/opt/qianshu/auth.env
+RuntimeDirectory=qianshu-auth-code
+RuntimeDirectoryMode=0755
+BindReadOnlyPaths=/opt/qianshu/auth:/run/qianshu-auth-code
+WorkingDirectory=/run/qianshu-auth-code
+ExecStart=/usr/bin/python3 /run/qianshu-auth-code/server.py
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

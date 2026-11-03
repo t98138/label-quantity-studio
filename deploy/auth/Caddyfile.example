@@ -1,0 +1,14 @@
+# Merge into your existing HTTPS site block; replace the internal auth address.
+# Expose the auth service ONLY to Caddy, never as a public port.
+@qianshuRoot path /qianshu
+redir @qianshuRoot /qianshu/ 308
+handle /qianshu/auth/* {
+    reverse_proxy 127.0.0.1:8787
+}
+handle_path /qianshu/* {
+    forward_auth 127.0.0.1:8787 {
+        uri /qianshu/auth/verify
+    }
+    header Cache-Control "private, no-store"
+    reverse_proxy 127.0.0.1:8767
+}
